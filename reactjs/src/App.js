@@ -7,7 +7,7 @@ function App() {
   const [error, setError] = useState(null);
   const API_BASE =
     process.env.NODE_ENV === "development"
-      ? `http://localhost:8000`
+    ? `http://localhost:8000/api/v1`
       : process.env.REACT_APP_BASE_URL;
 
   let ignore = false;
@@ -26,7 +26,7 @@ function App() {
       await fetch(`${API_BASE}/books`)
         .then((res) => res.json())
         .then((data) => {
-          console.log({data});
+          console.log({ data });
           setBooks(data);
         });
     } catch (error) {
@@ -47,4 +47,4 @@ function App() {
   );
 }
 
-export default App; 
+export default App;
