@@ -1,0 +1,29 @@
+GET http://localhost:8000/books
+
+###
+
+GET http://localhost:8000/books/[id]
+
+###
+
+POST http://localhost:8000/books 
+Content-Type: application/json
+
+{
+    "name": "test-book", 
+    "author": "test-author"
+}
+
+###
+
+PATCH http://localhost:8000/books/62fa859f0c9391bae9e9c1e6
+Content_Type: application/json
+
+{
+    "name": "New Book", 
+    "author": "New Author"
+}
+
+###
+
+DELETE http://localhost:8000/books/62fa8908128d2063e7f6e845
