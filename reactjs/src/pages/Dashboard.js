@@ -94,7 +94,7 @@ function Dashboard() {
                 <input type="text" name="name" value={values.name} onChange={handleInputChanges} />
             </label>
             <label>
-                Class:
+                Author:
                 <input type="text" name="author" value={values.author} onChange={handleInputChanges} />
             </label>
             <input type="submit" value="Submit" />
