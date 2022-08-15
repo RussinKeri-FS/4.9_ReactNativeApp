@@ -44,36 +44,6 @@ function Dashboard() {
       }
     }
 
-    const createBook = async () => {
-      try {
-          await fetch(`${API_BASE}/books`, {
-              method: 'POST',
-              headers: {
-                  'Content-Type': 'application/json'
-              },
-              body: JSON.stringify(values)
-          }).then(() => getBooks())
-        } catch(error) {
-          setError(error.message || "Unexpected Error")
-        } finally {
-          setLoading(false)
-        }
-  }
-
-    const handleSubmit = (event) => {
-      event.preventDefault();
-      createBook();
-  }
-
-  const handleInputChanges = (event) => {
-      event.persist();
-      setValues((values) => ({
-          ...values,
-          [event.target.name]: event.target.value
-      }))
-  }
-
-
   return (
     <div className="App">
       <header className="App-header">
