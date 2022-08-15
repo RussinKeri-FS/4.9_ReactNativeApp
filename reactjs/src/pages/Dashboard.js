@@ -49,11 +49,11 @@ function Dashboard() {
       <header className="App-header">
         <h1>Books:</h1>
         <Link to="/">Home</Link>
-        <ul>
+        <li>
         {books?.map((book) => (
             <Link to={`/books/${book._id}`}>{book.name}</Link>
         ))}
-        </ul>
+        </li>
       </header>
     </div>
   );
