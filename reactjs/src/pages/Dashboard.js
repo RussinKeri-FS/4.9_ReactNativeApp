@@ -80,25 +80,10 @@ function Dashboard() {
         <h1>Books:</h1>
         <Link to="/">Home</Link>
         <ul>
-          {
-            books?.map(book => (
-              <li key={book._id}>
-                <Link to={`/books/${book._id}`}>{book.name}</Link>
-              </li>
-            ))
-          }
+        {books?.map((book) => (
+            <Link to={`/books/${book._id}`}>{book.name}</Link>
+        ))}
         </ul>
-        <form onSubmit={(event) => handleSubmit(event)}>
-            <label>
-                Name:
-                <input type="text" name="name" value={values.name} onChange={handleInputChanges} />
-            </label>
-            <label>
-                Author:
-                <input type="text" name="author" value={values.author} onChange={handleInputChanges} />
-            </label>
-            <input type="submit" value="Submit" />
-        </form>
       </header>
     </div>
   );
