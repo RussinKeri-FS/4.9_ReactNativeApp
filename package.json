@@ -2,7 +2,7 @@
     "name": "apiWithClient",
     "version": "1.0.0",
     "engines": {
-        "node": "16.17.0"
+        "node": "18.2.0"
     },
     "main": "index.js",
     "scripts": {
