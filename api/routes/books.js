@@ -1,5 +1,8 @@
 const express = require("express");
 const router = express.Router();
+const passport = require("passport");
+const passportService = require("../services/passport");
+const protectedRoute = passport.authenticate("jwt", { session: false });
 
 const Book = require("../models/book");
 // RESTful Endpoints
@@ -20,7 +23,7 @@ const getBook = async (req, res, next) => {
 };
 
 // GET ALL
-router.get("/", async (req, res, next) => {
+router.get("/", protectedRoute, async (req, res, next) => {
   try {
     const books = await Book.find();
     res.json(books);
@@ -30,12 +33,12 @@ router.get("/", async (req, res, next) => {
 });
 
 // GET ONE (by ID)
-router.get("/:id", getBook, async (req, res, next) => {
+router.get("/:id", protectedRoute, getBook, async (req, res, next) => {
   res.json(res.book);
 });
 
 // POST
-router.post("/", async (req, res, next) => {
+router.post("/", protectedRoute, async (req, res, next) => {
   const book = new Book({
     name: req.body.name,
     author: req.body.author,
@@ -49,7 +52,7 @@ router.post("/", async (req, res, next) => {
 });
 
 // PATCH
-router.patch('/:id', getBook, async (req, res) => {
+router.patch('/:id', protectedRoute, getBook, async (req, res) => {
   if(req.body.name != null){
       res.book.name = req.body.name
   }
@@ -65,7 +68,7 @@ router.patch('/:id', getBook, async (req, res) => {
 })
 
 // DELETE
-router.delete("/:id", getBook, async (req, res, next) => {
+router.delete("/:id", protectedRoute, getBook, async (req, res, next) => {
   try {
     await res.book.remove();
     res.json({ message: `Removed Book` });
