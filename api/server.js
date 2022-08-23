@@ -5,6 +5,7 @@ const path = require("path");
 const cors = require("cors");
 
 const bookRouter = require("./routes/books");
+const authRouter = require("./routes/auth");
 
 const app = express();
 app.use(cors());
@@ -19,6 +20,7 @@ db.once("open", () => console.log(`Database Connection Established.`));
 
 app.use(express.json());
 app.use('/api/v1/books', bookRouter);
+app.use('/api/v1/auth', authRouter);
 
 // look in react build folder for static build
 app.use(express.static(path.join(__dirname, "../reactjs/build")));
